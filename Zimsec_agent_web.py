@@ -1,6 +1,8 @@
 import cherrypy
 import os
-import google.generativeai as genai
+from google import genai
+# We need to import types explicitly to create the configuration object
+from google.genai import types 
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,6 +17,7 @@ USERS = {
     "examiner": "marking101"
 }
 # ---- Configure the Gemini Model ----
+# Note: Ensure GEMINI_API_KEY is set in your .env file
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 
 system_instructions = (
@@ -44,10 +47,18 @@ system_instructions = (
     "'I can only provide information from our website. For anything else, please contact us on WhatsApp by clicking here: https://wa.me/263773021796'"
 )
 
-model = genai.GenerativeModel(
-    model_name='gemini-2.5-flash',
+# --- FIX START ---
+# Create the configuration object to hold the system instruction
+config = types.GenerateContentConfig(
     system_instruction=system_instructions
 )
+
+# Pass the config object to the GenerativeModel constructor
+model = genai.GenerativeModel(
+    model_name='gemini-2.5-flash',
+    config=config
+)
+# --- FIX END ---
 chat = model.start_chat()
 
 # ---- CherryPy Application ----
@@ -59,13 +70,16 @@ class ZIMSECApp:
         return self.chat_ui()
 
     @cherrypy.expose
-    def login(self):
-        return """
+    def login(self, error=None):
+        # Display error message if present in the query parameters
+        error_message = f'<p style="color: #ff5c5c; margin-bottom: 20px;">{error}</p>' if error else ''
+        
+        return f"""
         <html>
         <head>
             <title>Login - ZIMSEC Assistant</title>
             <style>
-                body {
+                body {{
                     font-family: 'Inter', sans-serif;
                     background: radial-gradient(circle at top left, #1a103d, #0b0b0f);
                     display: flex;
@@ -74,16 +88,16 @@ class ZIMSECApp:
                     height: 100vh;
                     margin: 0;
                     color: #fff;
-                }
-                .login-box {
+                }}
+                .login-box {{
                     background: rgba(255,255,255,0.05);
                     padding: 40px;
                     border-radius: 16px;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.6);
                     width: 350px;
                     text-align: center;
-                }
-                input {
+                }}
+                input {{
                     width: 90%;
                     padding: 12px;
                     border: none;
@@ -91,8 +105,8 @@ class ZIMSECApp:
                     border-radius: 10px;
                     background: rgba(255,255,255,0.1);
                     color: #fff;
-                }
-                button {
+                }}
+                button {{
                     width: 100%;
                     background: linear-gradient(90deg,#8b5cf6,#7c3aed);
                     border: none;
@@ -101,13 +115,14 @@ class ZIMSECApp:
                     font-weight: bold;
                     color: white;
                     cursor: pointer;
-                }
-                h2 { color: #b79fff; }
+                }}
+                h2 {{ color: #b79fff; }}
             </style>
         </head>
         <body>
             <div class="login-box">
                 <h2>Welcome to Chipo — ZIMSEC Assistant</h2>
+                {error_message}
                 <form method="post" action="do_login">
                     <input type="text" name="username" placeholder="Username" required><br>
                     <input type="password" name="password" placeholder="Password" required><br>
@@ -120,11 +135,15 @@ class ZIMSECApp:
 
     @cherrypy.expose
     def do_login(self, username=None, password=None):
-        if username == "admin" and password == "zimsec":
+        user_password = USERS.get(username)
+        
+        # Check if the username exists and the password matches
+        if user_password and user_password == password:
             cherrypy.session["logged_in"] = True
             raise cherrypy.HTTPRedirect("/")
         else:
-            return "<script>alert('Invalid credentials'); window.location.href='/login';</script>"
+            # Replaced alert() with redirection showing an error message
+            raise cherrypy.HTTPRedirect("/login?error=Invalid credentials provided. Please try again.")
 
     @cherrypy.expose
     def logout(self):
@@ -252,10 +271,37 @@ class ZIMSECApp:
             if (!msg) return;
             appendMessage(msg, 'user');
             input.value = '';
-            const res = await fetch('/ask?msg=' + encodeURIComponent(msg));
-            const data = await res.json();
-            appendMessage(data.response, 'ai');
+            
+            // Add a temporary loading message for the AI response
+            const loadingMsgId = 'loading-' + Date.now();
+            appendMessage('<span id="' + loadingMsgId + '">...typing...</span>', 'ai');
+            
+            try {
+                const res = await fetch('/ask?msg=' + encodeURIComponent(msg));
+                const data = await res.json();
+                
+                // Replace the loading message with the actual response
+                const loadingEl = document.getElementById(loadingMsgId);
+                if (loadingEl && loadingEl.parentElement) {
+                    loadingEl.parentElement.innerHTML = data.response.replace(/</g, '&lt;').replace(/\\n/g, '<br>');
+                } else {
+                    appendMessage(data.response, 'ai');
+                }
+            } catch (error) {
+                console.error("Error fetching response:", error);
+                appendMessage("I'm sorry, an error occurred while connecting to the assistant. Please try again.", 'ai');
+            }
+            
+            scrollToBottom();
         }
+        
+        // Handle Enter key for sending messages
+        document.getElementById('user_input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
         </script>
         </body>
         </html>
@@ -263,6 +309,11 @@ class ZIMSECApp:
 
 # ---- CherryPy Configuration ----
 if __name__ == '__main__':
+    # Increase the session timeout for better user experience (default is 60 minutes)
+    cherrypy.config.update({
+        'session_timeout': 60 # set to 60 minutes
+    })
+    
     config = {
         '/': {
             'tools.sessions.on': True,
@@ -272,7 +323,8 @@ if __name__ == '__main__':
         'global': {
             'server.socket_host': os.getenv('HOST', '0.0.0.0'),
             'server.socket_port': int(os.getenv('PORT', 8080)),
-            'engine.autoreload.on': False
+            # Disabling autoreload to prevent issues with shared resources (like the model/chat object)
+            'engine.autoreload.on': False 
         }
     }
     cherrypy.quickstart(ZIMSECApp(), '/', config)
