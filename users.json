@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "password": "admin123",
+    "role": "admin"
+  },
+  "zimsec": {
+    "password": "admin123",
+    "role": "user"
+  },
+  "ropa": {
+    "password": "1234",
+    "role": "user"
+  }
+}

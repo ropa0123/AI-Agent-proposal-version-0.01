@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "2026 Exam Registration Opens",
+    "date": "2026-02-01",
+    "details": "Register online at zimsec website.",
+    "created_at": 1763385624.4281833
+  },
+  {
+    "id": 2,
+    "title": "Computer Science ",
+    "date": "2025-12-01",
+    "details": "testing the app",
+    "created_at": 1763388127.424847
+  }
+]
