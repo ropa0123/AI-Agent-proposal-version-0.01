@@ -1,3 +1,0 @@
-cherrypy
-google-genai
-python-dotenv
