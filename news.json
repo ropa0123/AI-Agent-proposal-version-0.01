@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to ZIMSEC Chat",
+    "body": "This is a demo news item.",
+    "created_at": 1763385624.4271748
+  },
+  {
+    "id": 2,
+    "title": "Code test for functionality",
+    "body": "this section is meant to determine if the program works",
+    "created_at": 1763389320.806063
+  }
+]

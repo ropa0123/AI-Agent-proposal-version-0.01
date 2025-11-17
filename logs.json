@@ -1,0 +1,392 @@
+[
+  {
+    "time": 1763386063.529403,
+    "action": "login_admin",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763386086.5033252,
+    "action": "admin_create_user",
+    "user": "admin",
+    "details": "ropa"
+  },
+  {
+    "time": 1763386109.7762432,
+    "action": "logout",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763386123.4287326,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763386161.8746092,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763386235.4622502,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763386295.0743897,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763386600.8720388,
+    "action": "login_admin",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763386632.2441676,
+    "action": "admin_delete_user",
+    "user": "admin",
+    "details": "ropa"
+  },
+  {
+    "time": 1763386642.014889,
+    "action": "admin_create_user",
+    "user": "admin",
+    "details": "ropa"
+  },
+  {
+    "time": 1763386644.9834454,
+    "action": "logout",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763386657.9656498,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763386679.2960622,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763386986.3247218,
+    "action": "login",
+    "user": "admin",
+    "details": "user login"
+  },
+  {
+    "time": 1763387038.0541341,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763387274.5166807,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763387320.8208287,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763387474.938081,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763387481.085241,
+    "action": "clear_history",
+    "user": "zimsec",
+    "details": ""
+  },
+  {
+    "time": 1763387488.0979755,
+    "action": "logout",
+    "user": "zimsec",
+    "details": ""
+  },
+  {
+    "time": 1763387501.7583756,
+    "action": "login_admin",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763387510.6906734,
+    "action": "logout",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763387523.524426,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763387550.2505221,
+    "action": "clear_history",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763387556.0611665,
+    "action": "logout",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763388025.6161385,
+    "action": "login_admin",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763388127.4273007,
+    "action": "admin_add_event",
+    "user": "admin",
+    "details": "Computer Science "
+  },
+  {
+    "time": 1763388139.0226188,
+    "action": "logout",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763388162.2771568,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763388239.2404418,
+    "action": "logout",
+    "user": "zimsec",
+    "details": ""
+  },
+  {
+    "time": 1763389188.6043963,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763389200.403495,
+    "action": "logout",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763389211.284154,
+    "action": "login_admin",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763389262.373121,
+    "action": "admin_add_news",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763389265.4357734,
+    "action": "admin_delete_news",
+    "user": "admin",
+    "details": "2"
+  },
+  {
+    "time": 1763389320.8074524,
+    "action": "admin_add_news",
+    "user": "admin",
+    "details": "Code test for functionality"
+  },
+  {
+    "time": 1763389329.9773455,
+    "action": "logout",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763389378.246252,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763389551.6362412,
+    "action": "new_chat",
+    "user": "zimsec",
+    "details": ""
+  },
+  {
+    "time": 1763390036.9257526,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763390062.0038347,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763390098.5748441,
+    "action": "login",
+    "user": "zimsec",
+    "details": "user login"
+  },
+  {
+    "time": 1763390505.7250404,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763390511.615458,
+    "action": "ask",
+    "user": "ropa",
+    "details": "hello"
+  },
+  {
+    "time": 1763390630.5766242,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763390634.5232053,
+    "action": "clear_history",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763390638.821741,
+    "action": "ask",
+    "user": "ropa",
+    "details": "hello"
+  },
+  {
+    "time": 1763390758.9464345,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763390765.5781279,
+    "action": "ask",
+    "user": "ropa",
+    "details": "hello"
+  },
+  {
+    "time": 1763390809.7851958,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763390816.412432,
+    "action": "ask",
+    "user": "ropa",
+    "details": "hello"
+  },
+  {
+    "time": 1763391010.741267,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763391014.4563308,
+    "action": "clear_history",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763391055.6123958,
+    "action": "ask",
+    "user": "ropa",
+    "details": "hello"
+  },
+  {
+    "time": 1763391207.592687,
+    "action": "logout",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763391333.2524707,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763391361.9895296,
+    "action": "ask",
+    "user": "ropa",
+    "details": "when is the ndebele paper"
+  },
+  {
+    "time": 1763391408.9286256,
+    "action": "ask",
+    "user": "ropa",
+    "details": "yes"
+  },
+  {
+    "time": 1763391678.8596015,
+    "action": "logout",
+    "user": "ropa",
+    "details": ""
+  },
+  {
+    "time": 1763391689.596527,
+    "action": "login_admin",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763391794.502166,
+    "action": "admin_clear_all_histories",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763391814.4939377,
+    "action": "logout",
+    "user": "admin",
+    "details": ""
+  },
+  {
+    "time": 1763392408.5155246,
+    "action": "login",
+    "user": "ropa",
+    "details": "user login"
+  },
+  {
+    "time": 1763392431.459095,
+    "action": "ask",
+    "user": "ropa",
+    "details": "when is the ndebele paper"
+  },
+  {
+    "time": 1763392490.3705692,
+    "action": "logout",
+    "user": "ropa",
+    "details": ""
+  }
+]
