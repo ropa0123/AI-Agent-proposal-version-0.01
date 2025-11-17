@@ -1,7 +1,0 @@
-cherrypy
-python-dotenv
-google-generativeai
-PyPDF2
-fpdf
-werkzeug
-Jinja2
